@@ -138,7 +138,7 @@ joined_by_hhip AS (
     juid.ip_address AS ip_address,
     is_household,
     CASE 
-      WHEN c.pixel_id = '10114' THEN 'hhip' 
+      WHEN c.pixel_id = '10114' AND is_household is TRUE THEN 'hhip' 
       ELSE null 
     END as conversion_mapping_source,
   FROM (SELECT * FROM joined_by_user_id WHERE conversion_All_Site_Visitors IS NULL) juid
