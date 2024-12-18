@@ -273,4 +273,4 @@ GROUP BY
   flattened_utm_medium, 
   flattened_utm_source
 
-ORDER BY br_revenue DESC
+ORDER BY date_ts ASC
