@@ -7,7 +7,7 @@ WITH pixel_data as (
     FROM `ozone-analytics-dev.ozone.dim_site_sessions`,
     UNNEST(site_pages) as sp
 
-    WHERE date = current_date - 1
+    WHERE date = current_date - 16
     and sp.pixel_type = 'conversion'
 
 ),
@@ -19,9 +19,9 @@ winlog_data as (
     campaign_id,
     line_item_alt_id
 
-    FROM `ozone-analytics-dev.ozone.stg_beeswax__win_log` 
+    FROM `ozone-analytics-dev.ozone.stg_beeswax__win_log` TABLESAMPLE SYSTEM (1 PERCENT)
 
-    WHERE DATE(bid_time_utc) = current_date - 1
+    WHERE DATE(bid_time_utc) = current_date - 16
 
 ),
 
@@ -51,6 +51,7 @@ final as (
     -- winlog fields to check
     advertiser_id,
     line_item_alt_id,
+    campaign_alt_id,
     -- salesforce fields
     Line_Item_Line_ID as salesforce_LI_ID,
     IO_Number,
