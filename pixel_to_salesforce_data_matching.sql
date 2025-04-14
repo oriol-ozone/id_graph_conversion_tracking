@@ -52,6 +52,7 @@ final as (
     advertiser_id,
     line_item_alt_id,
     campaign_alt_id,
+    campaign_id,
     -- salesforce fields
     Line_Item_Line_ID as salesforce_LI_ID,
     IO_Number,
